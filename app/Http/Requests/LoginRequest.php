@@ -30,9 +30,9 @@ class LoginRequest extends FormRequest
     public function messages()
     {
         return [
-            'email.required' => 'El email es requerido',
-            'email.email'  => 'El email no es valido',
-            'email.exists' => 'Esta cuenta no existe',
+            'email.required' => 'El email es obligatorio',
+            'email.email' => 'El email no es válido',
+            'email.exists' => 'Esa cuenta no existe',
             'password' => 'El password es obligatorio'
         ];
     }
