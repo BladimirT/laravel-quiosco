@@ -20,16 +20,19 @@ class RegistroRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+    public function rules()
     {
         return [
-            'name' => ['required', 'string'],
-            'email' => ['required', 'email', 'unique:user,email'],
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'unique:users,email'],
             'password' => [
                 'required',
                 'confirmed',
-                PasswordRules::min(8)->letters()->symbols()->numbers()
-            ]
+                PasswordRules::min(8)
+                    ->letters()
+                    ->numbers()
+                    ->symbols()
+            ],
         ];
     }
 

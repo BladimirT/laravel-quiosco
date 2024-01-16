@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RegistroRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -28,6 +29,16 @@ class AuthController extends Controller
     }
     public function login(Request $request)
     {
+        $data = $request->validated();
+
+        // Revisar la contraseña
+        if (!Auth::attempt($data)) {
+            return response([
+                'errors' => ['El correo o la contraseña son incorrectos']
+            ], 422);
+
+            // Autenticar el usuario
+        }
     }
     public function logout(Request $request)
     {
