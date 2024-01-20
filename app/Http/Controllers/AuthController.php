@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegistroRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ class AuthController extends Controller
             'user' => $user
         ];
     }
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
         $data = $request->validated();
 
